@@ -57,6 +57,12 @@
                     item.html(`<strong>Name:</strong> ${c.name}\r<strong>Email:</strong> ${c.email}`);
                     $("#reserve").append(item);
                 });
+                data.waitList.forEach(function (c) {
+                    var item = $("<li>");
+                    item.addClass("list-group-item");
+                    item.html(`<strong>Name:</strong> ${c.name}\r<strong>Email:</strong> ${c.email}`);
+                    $("#wait").append(item);
+                });
                 // console.log( + "," + status)
             });
         });
