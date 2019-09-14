@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+        </script>
     <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.css">
     <title>Hot Resturant</title>
 </head>
@@ -29,7 +28,8 @@
                 <h1 class="display-4"><i class="fas fa-fire"></i> Hot Resturant</h1>
                 <hr class="my-4">
                 <h2>We only have 5 tables! Book your seat before they all are gone!</h2>
-                <a class="btn btn-primary btn-lg" href="/waitlist" role="button"><i class="fas fa-utensils"></i>View Tables</a>
+                <a class="btn btn-primary btn-lg" href="/waitlist" role="button"><i class="fas fa-utensils"></i>View
+                    Tables</a>
                 <a class="btn btn-primary btn-lg fa fa-home fa-2x" href="/index" role="button"></a>
             </div>
         </div>
@@ -38,7 +38,7 @@
             <form class="col-12">
                 <div class="form-group">
                     <label for="inputEmal">Email</label>
-                    <input type="email" class="form-control" id="inputEmal" aria-describedby="emailHelp"
+                    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
                         placeholder="Enter email">
                 </div>
                 <div class="form-group">
@@ -60,7 +60,33 @@
 
     </div>
 
-    <script src="./data.js"></script>
+    <script>
+        //To be added to HTML, sends obj via POST to server.
+        var quotes = ["Hangry: an emotion when you are seething with anger, thanks to hunger pangs.", "Hangry Symptoms: Wishing to kill anyone who hasn't brought you food, and wants to chat you up instead.", " Caution: Keep away from those temporarily affected by the hangry epidemic."];
+        function getQuote() {
+            var random = Math.round(Math.random * (quotes.length - 1));
+            alert("Your table has been reserved, thank you\r" +
+                quotes[random]);
+        }
+
+
+        $("#add-btn").on("click", function (event) {
+            event.preventDefault();
+            var newReservation = {
+                name: $("#inputName").val().trim(),
+                phone: $("#inputPhone").val().trim(),
+                email: $("#inputEmail").val().trim(),
+                unique: $("#inputID").val().trim()
+            };
+
+            // Question: What does this code do??
+            $.post("/api/reservation", newReservation)
+                .then(function (data) {
+                    console.log("add.html", data);
+                    getQuote();
+                });
+        });
+    </script>
 
     <script src="https://kit.fontawesome.com/89b68748b2.js"></script>
 
