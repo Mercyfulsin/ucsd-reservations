@@ -7,6 +7,21 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
+
+
+app.get("/reservation.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "/reservation.html"));
+});
+
+app.get("/waitlist.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "/waitlist.html"));
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/index.html"));
+});
+
 // Create New Characters - takes in JSON input
 app.post("/api/reservation", function (req, res) {
   // req.body hosts is equal to the JSON post sent from the user
