@@ -49,6 +49,14 @@
 
     </div>
 
+    <script>
+    $("#resList").on("load", function(){
+        $.get("/api/tables", (data, status) => {
+            console.log(data + "," + status)
+        });
+    })
+    </script>
+
     <script src="https://kit.fontawesome.com/89b68748b2.js"></script>
 
 </body>
