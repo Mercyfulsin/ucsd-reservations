@@ -10,11 +10,11 @@ app.use(express.json());
 
 
 
-app.get("/reservation.html", (req, res) => {
+app.get("/reservation", (req, res) => {
   res.sendFile(path.join(__dirname, "/reservation.html"));
 });
 
-app.get("/waitlist.html", (req, res) => {
+app.get("/waitlist", (req, res) => {
   res.sendFile(path.join(__dirname, "/waitlist.html"));
 });
 
