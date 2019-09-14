@@ -8,7 +8,31 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
+var reservation = [
+  {
+    name: "Guillermo",
+    phone: "555555555",
+    email: "glara9@gmail.com  ",
+    unique: "memo1"
 
+  },
+  {
+    name: "francisco",
+    phone: "555555555",
+    email: "flara8@gmail.com  ",
+    unique: "fla9"
+
+  }
+];
+
+var waitList = [
+  {
+    name: "Luis",
+    phone: "4444444444",
+    email: "luis@gmail.com  ",
+    unique: "luis8"
+  }
+]
 
 app.get("/reservation", (req, res) => {
   res.sendFile(path.join(__dirname, "/reservation.html"));
@@ -17,10 +41,19 @@ app.get("/reservation", (req, res) => {
 app.get("/waitlist", (req, res) => {
   res.sendFile(path.join(__dirname, "/waitlist.html"));
 });
-
+// Displays Reservations
+app.get("/api/tables", function (require, response) {
+  let arrayObj = {
+    reservation,
+    waitList
+  };
+  return response.json(arrayObj);
+});
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "/index.html"));
 });
+
+
 
 // Create New Characters - takes in JSON input
 app.post("/api/reservation", function (req, res) {
