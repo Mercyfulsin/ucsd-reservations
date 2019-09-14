@@ -3,10 +3,10 @@
 $("#add-btn").on("click", function (event) {
     event.preventDefault();
     var newReservation = {
-        name: $("#name").val().trim(),
-        phoneNum: $("#phone-number").val().trim(),
-        email: $("#email").val().trim(),
-        uniqueId: $("#unique-id").val().trim()
+        name: $("#inputName").val().trim(),
+        phoneNum: $("#inputPhone").val().trim(),
+        email: $("#inputEmail").val().trim(),
+        uniqueId: $("#inputID").val().trim()
     };
 
     // Question: What does this code do??

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/edelBCS/ucsd-reservations#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "fontawesome": "^5.6.3"
   },
   "devDependencies": {
