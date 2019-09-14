@@ -15,7 +15,7 @@ app.post("/api/reservation", function (req, res) {
 
   // Using a RegEx Pattern to remove spaces from newCharacter
   // You can read more about RegExpression Patterns later https://www.regexbuddy.com/regex.html
-  newReservation.routeName = ewReservation.name.replace(/\s+/g, "").toLowerCase();
+  newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
 
   console.log(newReservation);
 
